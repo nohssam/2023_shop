@@ -3,7 +3,18 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="shop">
-	
+	<select id="login" parameterType="com.ict.db.MemberVO" resultType="com.ict.db.MemberVO">
+		select * from member01 where m_id=#{m_id} and m_pw=#{m_pw}
+	</select>	
+	<select id="list" parameterType="String" resultType="com.ict.db.ShopVO">
+		select * from shop_t where category = #{category}
+	</select>
+	<select id="oneList" parameterType="String" resultType="com.ict.db.ShopVO">
+		select * from shop_t where idx = #{idx}
+	</select>
+	<select id="cartList" parameterType="Map" resultType="com.ict.db.CartVO">
+		select * from cart where m_id=#{m_id} and p_num=#{p_num}
+	</select>
 </mapper>
 
 

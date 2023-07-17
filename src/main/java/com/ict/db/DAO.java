@@ -19,7 +19,38 @@ public class DAO {
 		return ss;
 	}
 	
+	// 로그인 
+	public static MemberVO getLogIn(MemberVO mvo) {
+		MemberVO m_vo = getSession().selectOne("shop.login", mvo);
+		return m_vo;
+	}
 	
+	// 리스트
+	public static List<ShopVO> getList(String category){
+		try {
+			List<ShopVO> list = getSession().selectList("shop.list", category);
+			return list;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	// 상세 보기 
+	public static ShopVO getOneList(String idx) {
+		ShopVO vo = getSession().selectOne("shop.oneList", idx);
+		return vo;
+	}
+	
+	// 카트 리스트 구하기 
+	public static CartVO getCartList(String m_id, String p_num) {
+		Map<String, String> map = new HashMap<>();
+		map.put("m_id", m_id);
+		map.put("p_num", p_num);
+		
+		CartVO cvo = getSession().selectOne("shop.cartList", map);
+		return cvo;
+	}
 }
 
 
