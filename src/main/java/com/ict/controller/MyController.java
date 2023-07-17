@@ -17,6 +17,7 @@ import com.ict.model.ListCommand;
 import com.ict.model.LogInCommand;
 import com.ict.model.LogInOKCommand;
 import com.ict.model.LogOutCommand;
+import com.ict.model.ShowCartCommand;
 
 @WebServlet("/MyController")
 public class MyController extends HttpServlet {
@@ -41,6 +42,7 @@ public class MyController extends HttpServlet {
 			case "content": comm = new ContentCommand(); break;
 			case "logout": comm = new LogOutCommand(); break;
 			case "addcart": comm = new AddCartCommand(); break;
+			case "showcart": comm = new ShowCartCommand(); break;
 		}
 		String path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);
